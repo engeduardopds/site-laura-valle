@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Laura do Valle",
+      "jobTitle": "Psicóloga",
+      "identifier": "CRP 07/21885",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Porto Alegre",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "url": "https://laurapordanydovalle.netlify.app",
+      "email": "mailto:laurapordany@gmail.com"
+    },
+    {
+      "@type": "LocalBusiness",
+      "name": "Consultório Laura do Valle",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Porto Alegre",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        "Porto Alegre",
+        "Brasil (online)"
+      ]
+    }
+  ]
+}

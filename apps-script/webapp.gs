@@ -1,7 +1,14 @@
 const SPREADSHEET_ID = "1Ktb-ikC3nJWSMpMMk0PBVitvvoNigLquJd0pv8j0iCo";
 const SHEET_NAME = "Leads";
-const REMETENTE = "engeduardopds@gmail.com";
+// ATENÇÃO: Certifique-se que este email é o mesmo da conta onde criou o script
+const REMETENTE = "engeduardopds@gmail.com"; 
 const NOME_REMETENTE = "Laura do Valle";
+
+// --- NOVO: Função para responder quando se acede ao link pelo navegador ---
+function doGet(e) {
+  return ContentService.createTextOutput("O sistema de automação está ativo! Use o formulário do site para enviar dados.").setMimeType(ContentService.MimeType.TEXT);
+}
+// ------------------------------------------------------------------------
 
 function doPost(e) {
   try {
@@ -47,9 +54,11 @@ function doPost(e) {
 
     // 4) Envia e-mail D0 (se templates existirem)
     try {
+      Logger.log("Tentando enviar email para: " + email);
       sendEmailD0(nome, email);
+      Logger.log("Email enviado com sucesso!");
     } catch (mailErr) {
-      Logger.log("Erro ao enviar D0: " + mailErr);
+      Logger.log("ERRO CRÍTICO ao enviar D0: " + mailErr);
     }
 
     return ContentService.createTextOutput("ok").setMimeType(ContentService.MimeType.TEXT);
@@ -115,6 +124,7 @@ function processUnsubscribes() {
 // ===== E-mails (HTML em arquivos separados) =====
 function sendEmailD0(nome, email){
   const assunto = "Seu guia — Checklist de Regulação Emocional";
+  // Verifica se o arquivo existe antes de tentar carregar
   const corpo = HtmlService.createHtmlOutputFromFile("d0_entrega").getContent().replaceAll("{{NOME}}", nome);
   GmailApp.sendEmail(email, assunto, "", {from: REMETENTE, name: NOME_REMETENTE, htmlBody: corpo});
 }

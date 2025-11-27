@@ -57,10 +57,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Adiciona uma transição suave para as animações de scroll */
+        body { font-family: 'Inter', sans-serif; }
+        
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -70,9 +68,48 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Estilo para a rotação do ícone do acordeão */
-        .rotate-180 {
-            transform: rotate(180deg);
+        .rotate-180 { transform: rotate(180deg); }
+
+        /* Animação de Brilho Sutil para o Menu Recursos */
+        @keyframes subtle-glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(20, 184, 166, 0); color: #4b5563; }
+            50% { text-shadow: 0 0 10px rgba(20, 184, 166, 0.4); color: #0f766e; }
+        }
+        
+        /* Ajuste para alinhar o sublinhado */
+        .glow-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px; /* Espaço entre texto e estrela */
+        }
+        
+        .glow-effect {
+            animation: subtle-glow 4s infinite ease-in-out;
+        }
+
+        /* Sublinhado animado no container inteiro para uniformidade */
+        .glow-container:hover {
+            animation: subtle-glow 1.5s infinite ease-in-out;
+        }
+        
+        /* Cria o sublinhado manualmente com ::after para controle total da posição */
+        .glow-container::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px; /* Ajuste fino da altura da linha */
+            left: 0;
+            background-color: #14b8a6;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .glow-container:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
     </style>
 </head>
@@ -82,15 +119,18 @@
     <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-teal-800">Laura do Valle</a>
-            <div class="hidden md:flex space-x-8">
+            <div class="hidden md:flex space-x-8 items-center">
                 <a href="#sobre" class="text-gray-600 hover:text-teal-700 transition duration-300">Sobre Mim</a>
                 <a href="#publico" class="text-gray-600 hover:text-teal-700 transition duration-300">Como trabalho</a>
                 <a href="#formacao" class="text-gray-600 hover:text-teal-700 transition duration-300">Formação</a>
-                <a href="#recursos" class="text-gray-600 hover:text-teal-700 transition duration-300">Recursos</a>
+                <!-- Link com Efeito Glow Ajustado -->
+                <a href="#recursos" class="text-gray-600 font-medium transition duration-300 glow-container glow-effect">
+                    Recursos <span class="text-xs">✨</span>
+                </a>
                 <a href="#contato" class="text-gray-600 hover:text-teal-700 transition duration-300">Contato</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
         <!-- Menu Mobile -->
@@ -98,7 +138,7 @@
             <a href="#sobre" class="block py-2 text-gray-600 hover:text-teal-700">Sobre Mim</a>
             <a href="#publico" class="block py-2 text-gray-600 hover:text-teal-700">Como trabalho</a>
             <a href="#formacao" class="block py-2 text-gray-600 hover:text-teal-700">Formação</a>
-            <a href="#recursos" class="block py-2 text-gray-600 hover:text-teal-700">Recursos</a>
+            <a href="#recursos" class="block py-2 text-teal-700 font-bold glow-effect">Recursos ✨</a>
             <a href="#contato" class="block py-2 text-gray-600 hover:text-teal-700">Contato</a>
         </div>
     </header>
@@ -109,20 +149,18 @@
         <section id="hero" class="py-20 md:py-32 bg-teal-50">
             <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="flex flex-col items-center md:order-last"> 
-                    <!-- ATUALIZAÇÃO: Imagem alterada para o arquivo local 'Laura.jpg' -->
                     <img src="Laura.png" alt="Foto de Laura do Valle" class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-lg object-cover" onerror="this.onerror=null;this.src='https://placehold.co/320x320/a0d2db/374151?text=Laura';">
                     <h2 class="text-3xl font-bold text-teal-900 mt-6">Laura do Valle</h2>
                     <p class="text-lg text-teal-800">Psicóloga | Mestre em Psicologia</p>
                     <div class="mt-6 flex justify-center space-x-6">
                         <!-- Instagram -->
                         <a href="https://www.instagram.com/alauradovalle/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-700 transition duration-300">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802-.46 1.15-.808.347-.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895-.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802-.46 1.15-.808.347-.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
                         </a>
                         <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/laura-do-valle-4104781b7/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-700 transition duration-300">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                        <!-- ATUALIZAÇÃO: Link do Doctoralia removido -->
                     </div>
                 </div>
                 <div class="text-center md:text-left"> 
@@ -168,7 +206,6 @@
                 <h2 class="text-3xl font-bold text-gray-800 mb-12">Mini Currículo</h2>
                 <div class="max-w-3xl mx-auto text-left space-y-8">
                     <p class="text-center text-lg mb-10 text-justify">Atuo como psicóloga clínica com enfoque em quadros de ansiedade, TDAH, déficits de organização/planejamento, carreira e relacionamentos. Sou professora em instituições de pós-graduação e supervisora clínica.</p>
-                    <!-- Lista de Formação -->
                     <div class="flex items-center bg-gray-100 p-4 rounded-lg">
                         <div class="flex-shrink-0 bg-teal-700 text-white rounded-full h-10 w-10 flex items-center justify-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                         <div class="ml-4"><h3 class="text-lg font-semibold text-gray-800">Psicóloga com 12 anos de formação - CRP 07/21885</h3></div>
@@ -193,10 +230,8 @@
             </div>
         </section>
 
-        <!-- ============================================= -->
-        <!-- SEÇÃO RECURSOS (COM ACORDEÃO) - NOVO          -->
-        <!-- ============================================= -->
-        <section id="recursos" class="py-20 md:py-28 bg-white">
+        <!-- SEÇÃO RECURSOS (COM ACORDEÃO E SELETOR) -->
+        <section id="recursos" class="py-20 md:py-28 bg-gray-50">
             <div class="container mx-auto px-6 fade-in">
                 <div class="max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Recursos Gratuitos</h2>
@@ -204,19 +239,19 @@
                     <div class="space-y-4">
                         
                         <!-- ITEM 1: Guia Gratuito -->
-                        <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                            <button class="accordion-header w-full px-6 py-4 bg-gray-50 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('recurso-1')">
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                            <button class="accordion-header w-full px-6 py-4 bg-white text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('recurso-1')">
                                 <div>
                                     <h3 class="text-xl font-bold text-teal-900">Guia Gratuito: Checklist de Regulação Emocional</h3>
                                     <p class="text-sm text-gray-600 mt-1">Baixe gratuitamente o material prático.</p>
                                 </div>
                                 <svg class="w-6 h-6 text-teal-700 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div id="recurso-1" class="hidden bg-white px-6 py-6 border-t border-gray-200">
+                            <div id="recurso-1" class="hidden px-6 py-6 border-t border-gray-200 bg-gray-50">
                                 <p class="text-gray-700 mb-6">Este guia prático vai te ajudar a identificar e lidar com emoções difíceis no dia a dia. Preencha o formulário abaixo para receber o PDF no seu e-mail.</p>
                                 
-                                <!-- FORMULÁRIO DE CAPTURA (INTEGRADO) -->
-                                <form id="lead-form" class="max-w-md mx-auto space-y-4 bg-gray-50 p-6 rounded-lg border border-gray-100">
+                                <!-- FORMULÁRIO DE CAPTURA -->
+                                <form id="lead-form" class="max-w-md mx-auto space-y-4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
                                         <input type="text" id="nome" name="nome" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500 transition" placeholder="Seu nome">
@@ -235,33 +270,98 @@
                             </div>
                         </div>
 
-                        <!-- ITEM 2: Aula Aberta -->
-                        <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                            <button class="accordion-header w-full px-6 py-4 bg-gray-50 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('recurso-2')">
+                        <!-- ITEM 2: Biblioteca de Apoio -->
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                            <button class="accordion-header w-full px-6 py-4 bg-white text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('recurso-2')">
                                 <div>
-                                    <h3 class="text-xl font-bold text-teal-900">Aula Aberta: 3 erros comuns ao lidar com ansiedade</h3>
-                                    <p class="text-sm text-gray-600 mt-1">Vídeo explicativo de 15 minutos.</p>
+                                    <h3 class="text-xl font-bold text-teal-900">Biblioteca de Apoio</h3>
+                                    <p class="text-sm text-gray-600 mt-1">Artigos e ferramentas rápidas para o dia a dia.</p>
                                 </div>
                                 <svg class="w-6 h-6 text-teal-700 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div id="recurso-2" class="hidden bg-white px-6 py-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4">Nesta aula, exploro os mecanismos da ansiedade e porque tentar "controlar" tudo pode gerar o efeito oposto.</p>
-                                <a href="#" class="inline-block bg-teal-700 text-white font-bold py-2 px-6 rounded-md hover:bg-teal-800 transition">Assistir Agora</a>
+                            <div id="recurso-2" class="hidden px-6 py-6 border-t border-gray-200 bg-gray-50">
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-teal-500 mr-2">📄</span>
+                                        <a href="#" class="text-gray-700 hover:text-teal-700 transition"><strong>3 erros comuns ao lidar com ansiedade</strong> (Vídeo/Artigo)</a>
+                                    </li>
+                                    <!-- Adicione mais itens aqui futuramente -->
+                                </ul>
                             </div>
                         </div>
 
-                        <!-- ITEM 3: Programa Educacional -->
-                        <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                            <button class="accordion-header w-full px-6 py-4 bg-gray-50 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('recurso-3')">
+                        <!-- ITEM 3: SELETOR DE CONTEÚDO (HUB) -->
+                        <div class="bg-white border border-teal-200 rounded-lg overflow-hidden shadow-md">
+                            <button class="accordion-header w-full px-6 py-4 bg-teal-50 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('recurso-3')">
                                 <div>
-                                    <h3 class="text-xl font-bold text-teal-900">Programa Educacional</h3>
-                                    <p class="text-sm text-gray-600 mt-1">Para quem quer aprender de forma estruturada.</p>
+                                    <h3 class="text-xl font-bold text-teal-900 flex items-center gap-2">
+                                        Hub Fazendo as Pazes: Cursos e Comunidade
+                                    </h3>
+                                    <p class="text-sm text-gray-600 mt-1">Ferramentas estruturadas para transformar sua relação com a neurodivergência.</p>
                                 </div>
                                 <svg class="w-6 h-6 text-teal-700 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div id="recurso-3" class="hidden bg-white px-6 py-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4">Conheça meu curso completo onde ensino ferramentas da Terapia Cognitivo-Comportamental para aplicar na sua vida.</p>
-                                <a href="https://nomedocurso.com.br" target="_blank" rel="noopener noreferrer" class="inline-block bg-teal-700 text-white font-bold py-2 px-6 rounded-md hover:bg-teal-800 transition">Conhecer Programa</a>
+                            <div id="recurso-3" class="hidden px-6 py-8 border-t border-teal-200 bg-white">
+                                
+                                <!-- ETAPA 1: O SELETOR (QUIZ) -->
+                                <div id="kit-selector">
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">Qual é o seu maior desafio hoje?</h4>
+                                    <p class="text-gray-600 text-center mb-6 text-sm">Selecione o que mais te incomoda para recebermos uma recomendação personalizada.</p>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-teal-50 transition">
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600 rounded focus:ring-teal-500" value="sono">
+                                            <span class="ml-3 text-gray-700">Dificuldade para dormir / Rotina noturna</span>
+                                        </label>
+                                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-teal-50 transition">
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600 rounded focus:ring-teal-500" value="emocoes">
+                                            <span class="ml-3 text-gray-700">Explosões emocionais / Choro fácil</span>
+                                        </label>
+                                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-teal-50 transition">
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600 rounded focus:ring-teal-500" value="foco">
+                                            <span class="ml-3 text-gray-700">Procrastinação / Falta de foco</span>
+                                        </label>
+                                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-teal-50 transition">
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600 rounded focus:ring-teal-500" value="ansiedade">
+                                            <span class="ml-3 text-gray-700">Pensamentos acelerados / Crises</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button onclick="generateKit()" class="bg-teal-700 text-white font-bold py-3 px-8 rounded-md hover:bg-teal-800 transition shadow-md">
+                                            Gerar meu Kit Personalizado
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- ETAPA 2: O RESULTADO (RECOMENDAÇÃO + SOFT SELL) -->
+                                <div id="kit-result" class="hidden fade-in">
+                                    <h4 class="text-xl font-bold text-teal-900 mb-2 text-center">Essas são as nossas recomendações para você</h4>
+                                    <p class="text-gray-600 text-center mb-8 text-sm">Selecionamos materiais gratuitos para te ajudar agora.</p>
+
+                                    <!-- Lista de Materiais Gerados (Exemplo Estático - Dinâmico via JS abaixo) -->
+                                    <div id="kit-list" class="space-y-3 mb-10 bg-gray-50 p-6 rounded-lg border border-gray-100">
+                                        <!-- Itens injetados via JS -->
+                                    </div>
+
+                                    <!-- MENSAGEM DE ACOLHIMENTO E VENDA -->
+                                    <div class="bg-teal-50 p-8 rounded-xl border border-teal-100 text-center">
+                                        <p class="text-gray-700 mb-6 text-justify leading-relaxed">
+                                            Selecionámos estes materiais gratuitos para te ajudar a lidar com o sintoma agora. Eles são teus para baixar e usar quando quiseres.<br><br>
+                                            Sabemos que, às vezes, ter a ferramenta é só o primeiro passo. O desafio real costuma ser <strong>como usar isso consistentemente</strong> sem se sentir sobrecarregado(a).<br><br>
+                                            Se sentires que precisas de um lugar seguro para aprender a estruturar estas mudanças no teu ritmo, sem julgamentos, o <strong>Hub Fazendo as Pazes</strong> foi criado para ser esse suporte.<br><br>
+                                            Não precisas de decidir nada agora. Experimenta os guias gratuitos acima. Se te fizerem bem, estaremos à espera no Hub para darmos o próximo passo juntos.
+                                        </p>
+                                        <a href="https://nomedocurso.com.br" target="_blank" rel="noopener noreferrer" class="inline-block bg-teal-700 text-white font-bold py-3 px-8 rounded-md hover:bg-teal-800 transition shadow-lg transform hover:-translate-y-1">
+                                            Conhecer o Hub Fazendo as Pazes
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="text-center mt-6">
+                                        <button onclick="resetKit()" class="text-gray-500 text-sm hover:text-teal-700 underline">Voltar e escolher outros temas</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -269,29 +369,27 @@
                 </div>
             </div>
         </section>
-        <!-- ============================================= -->
 
         <!-- Seção Contato -->
-        <section id="contato" class="py-20 md:py-28 bg-teal-50">
+        <section id="contato" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-6 fade-in">
                 <div class="text-center">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Entre em Contato</h2>
                     <p class="text-lg max-w-2xl mx-auto mb-12">Se você tiver alguma dúvida ou desejar agendar uma consulta, por favor, me envie uma mensagem.</p>
                 </div>
 
-                <!-- Informações de Contato -->
                 <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-center">
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
                         <h3 class="font-bold text-lg text-teal-800 mb-2">Endereço</h3>
                         <p>Rua Mostardeiro, 157, Sala 1402<br>Porto Alegre, RS</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
                         <h3 class="font-bold text-lg text-teal-800 mb-2">Email</h3>
                         <p>laurapordany@gmail.com</p>
                     </div>
                 </div>
 
-                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <div class="max-w-2xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
                     <form action="#" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -318,7 +416,7 @@
         </section>
 
         <!-- CTA SECUNDÁRIO -->
-        <section class="py-20 bg-white fade-in">
+        <section class="py-20 bg-teal-50 fade-in">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold text-gray-800 mb-6">Pronto(a) para dar o próximo passo?</h2>
                 <a href="#contato" class="inline-block bg-teal-700 text-white font-bold py-3 px-8 rounded-md hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-300 text-lg">
@@ -338,7 +436,7 @@
     </footer>
 
     <script>
-        // Script para menu mobile
+        // ... (Scripts de menu mobile e scroll anteriores mantidos) ...
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if(mobileMenuButton && mobileMenu){
@@ -346,54 +444,94 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
-
-        // Script para fechar menu mobile ao clicar em um link
         const mobileMenuLinks = document.querySelectorAll('#mobile-menu a, #header a');
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                     mobileMenu.classList.add('hidden');
-                }
+                if (!mobileMenu.classList.contains('hidden')) { mobileMenu.classList.add('hidden'); }
             });
         });
-
-        // Animação Fade In
         const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = {
-            threshold: 0.15, 
-            rootMargin: "0px 0px -50px 0px"
-        };
+        const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
         const appearOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, appearOptions);
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
+        faders.forEach(fader => { appearOnScroll.observe(fader); });
 
         // --- Lógica do Acordeão ---
         function toggleAccordion(id) {
             const content = document.getElementById(id);
             const btn = content.previousElementSibling;
             const icon = btn.querySelector('svg');
-
-            // Toggle content visibility
             content.classList.toggle('hidden');
-            
-            // Rotate icon
             icon.classList.toggle('rotate-180');
         }
 
-        // --- Automação de Envio do Guia (Google Apps Script) ---
-        // IMPORTANTE: Certifique-se que este é o URL correto do seu script
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxepVef6qIWph2I274-ZyYkMRNQtEpGQj7cXu31by6rTm8188pX3sXyYT_4c0Fv8_vn/exec";
+        // --- Lógica do SELETOR DE KIT (NOVO) ---
+        const resourcesDB = {
+            'sono': { title: 'Checklist de Higiene do Sono', link: '#' },
+            'emocoes': { title: 'Rastreador de Humor (Mood Tracker)', link: '#' },
+            'foco': { title: 'Guia Anti-Procrastinação', link: '#' },
+            'ansiedade': { title: 'Cartão de Enfrentamento para Crises', link: '#' }
+        };
 
+        function generateKit() {
+            const selected = Array.from(document.querySelectorAll('#kit-selector input:checked')).map(cb => cb.value);
+            const listContainer = document.getElementById('kit-list');
+            
+            if (selected.length === 0) {
+                alert("Por favor, selecione pelo menos um desafio para gerarmos o seu kit.");
+                return;
+            }
+
+            listContainer.innerHTML = ''; // Limpa lista anterior
+            
+            // Adiciona sempre o "Guia Básico" (Opcional, mas bom para volume)
+            listContainer.innerHTML += `
+                <div class="flex items-center justify-between p-3 bg-white rounded border border-gray-200">
+                    <div class="flex items-center">
+                        <span class="text-teal-500 mr-3 text-xl">📘</span>
+                        <span class="font-medium text-gray-700">Guia Básico do Hub (Introdução)</span>
+                    </div>
+                    <a href="#" class="text-teal-700 font-bold hover:underline text-sm">Baixar PDF</a>
+                </div>
+            `;
+
+            selected.forEach(key => {
+                const item = resourcesDB[key];
+                if (item) {
+                    listContainer.innerHTML += `
+                        <div class="flex items-center justify-between p-3 bg-white rounded border border-gray-200">
+                            <div class="flex items-center">
+                                <span class="text-teal-500 mr-3 text-xl">📄</span>
+                                <span class="font-medium text-gray-700">${item.title}</span>
+                            </div>
+                            <a href="${item.link}" class="text-teal-700 font-bold hover:underline text-sm">Baixar PDF</a>
+                        </div>
+                    `;
+                }
+            });
+
+            // Troca a visualização
+            document.getElementById('kit-selector').classList.add('hidden');
+            document.getElementById('kit-result').classList.remove('hidden');
+            // Animação de entrada
+            setTimeout(() => document.getElementById('kit-result').classList.add('visible'), 50);
+        }
+
+        function resetKit() {
+            document.getElementById('kit-result').classList.add('hidden');
+            document.getElementById('kit-selector').classList.remove('hidden');
+            // Limpa checkboxes
+            document.querySelectorAll('#kit-selector input').forEach(cb => cb.checked = false);
+        }
+
+        // --- Automação de Envio (Mantida) ---
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxepVef6qIWph2I274-ZyYkMRNQtEpGQj7cXu31by6rTm8188pX3sXyYT_4c0Fv8_vn/exec";
         const form = document.getElementById('lead-form');
         const statusMsg = document.getElementById('lead-status');
         const btnLead = document.getElementById('submit-btn');
@@ -401,32 +539,21 @@
         if(form){
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
                 btnLead.disabled = true;
                 btnLead.textContent = "Enviando...";
                 statusMsg.textContent = "";
                 statusMsg.className = "text-sm text-center font-semibold mt-2 text-gray-600";
-
                 const nome = document.getElementById('nome').value;
                 const email = document.getElementById('email').value;
-
-                const payload = { 
-                    nome: nome, 
-                    email: email, 
-                    origem: "site_accordion" 
-                };
-
+                const payload = { nome: nome, email: email, origem: "site_accordion" };
                 try {
                     await fetch(WEB_APP_URL, { 
-                        method: "POST", 
-                        mode: "no-cors", 
+                        method: "POST", mode: "no-cors", 
                         headers: { "Content-Type": "text/plain" },
                         body: JSON.stringify(payload) 
                     });
-
                     console.log("Envio concluído.");
                     window.location.href = "obrigado.html";
-
                 } catch (err) {
                     console.error("Erro no fetch:", err);
                     statusMsg.textContent = "Erro de conexão. Tente novamente.";
@@ -441,4 +568,3 @@
 </html>
 ```
 ```eof
-

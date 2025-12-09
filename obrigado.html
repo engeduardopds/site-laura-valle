@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
       body{font-family:'Inter',sans-serif}
-      /* Adicionando a classe para a animação de fade-in, se desejar usar */
       .fade-in {
           opacity: 0;
           transform: translateY(20px);
@@ -22,60 +21,58 @@
       }
   </style>
 </head>
-<!-- Fundo cinza claro, similar à seção de recursos -->
 <body class="bg-gray-50 text-gray-700 min-h-screen flex items-center justify-center p-6">
   
-  <!-- Container principal com fundo branco, bordas arredondadas e sombra -->
   <main class="max-w-2xl w-full bg-white shadow-md rounded-xl overflow-hidden fade-in visible">
     <div class="p-8 md:p-12 text-center">
       
-      <!-- Ícone de Sucesso Melhorado e Centralizado -->
       <div class="flex justify-center mb-6">
           <div class="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center">
               <svg class="w-10 h-10 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
           </div>
       </div>
       
-      <!-- Conteúdo Dinâmico com Tipografia Ajustada -->
       <h1 id="thank-you-title" class="text-3xl md:text-4xl font-bold text-teal-900 mb-4">Tudo certo! 🎉</h1>
       <p id="thank-you-message" class="text-lg text-gray-700 leading-relaxed">A sua solicitação foi recebida com sucesso.</p>
 
       <!-- Lista de Recursos (Oculta por padrão) -->
-      <!-- Usando um estilo de "card" para a lista, consistente com o design -->
       <div id="resources-list" class="hidden mt-10 text-left bg-teal-50 rounded-lg p-6 border border-teal-100">
           <p class="text-center font-medium text-teal-900 mb-6">Enquanto aguarda, confira nossos materiais gratuitos:</p>
           
           <div class="space-y-4">
-              <!-- Item 1: Guia -->
-              <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                      <h4 class="font-bold text-teal-900 text-lg">Guia Gratuito de Regulação Emocional</h4>
-                      <p class="text-sm text-gray-600">Baixe o material prático.</p>
+              <!-- Item 1: Guia (Card Inteiro Clicável) -->
+              <a href="index.html#recursos" class="block bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md hover:border-teal-300 transition duration-300 group">
+                  <div class="flex items-center justify-between">
+                      <div>
+                          <h4 class="font-bold text-teal-900 text-lg group-hover:text-teal-700 transition">Guia Gratuito de Regulação Emocional</h4>
+                          <p class="text-sm text-gray-600 mt-1">Baixe o material prático.</p>
+                      </div>
+                      <!-- Seta removida conforme solicitado, mantendo o layout limpo -->
                   </div>
-                  <a href="index.html#recursos" class="inline-block text-center bg-teal-100 text-teal-700 font-bold py-2 px-4 rounded hover:bg-teal-200 transition whitespace-nowrap">Ir para Download</a>
-              </div>
+              </a>
 
-              <!-- Item 2: Aula Aberta -->
-              <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                      <h4 class="font-bold text-teal-900 text-lg">Aula Aberta: Ansiedade</h4>
-                      <p class="text-sm text-gray-600">Vídeo explicativo de 15 minutos.</p>
+              <!-- Item 2: Aula Aberta (Card Inteiro Clicável) -->
+              <a href="index.html#recursos" class="block bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md hover:border-teal-300 transition duration-300 group">
+                  <div class="flex items-center justify-between">
+                      <div>
+                          <h4 class="font-bold text-teal-900 text-lg group-hover:text-teal-700 transition">Aula Aberta: Ansiedade</h4>
+                          <p class="text-sm text-gray-600 mt-1">Vídeo explicativo de 15 minutos.</p>
+                      </div>
                   </div>
-                  <a href="#" class="inline-block text-center bg-teal-100 text-teal-700 font-bold py-2 px-4 rounded hover:bg-teal-200 transition whitespace-nowrap">Assistir Agora</a>
-              </div>
+              </a>
 
-              <!-- Item 3: Hub -->
-              <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                      <h4 class="font-bold text-teal-900 text-lg">Hub Fazendo as Pazes</h4>
-                      <p class="text-sm text-gray-600">Ferramentas estruturadas.</p>
+              <!-- Item 3: Hub (Card Inteiro Clicável) -->
+              <a href="https://nomedocurso.com.br" target="_blank" class="block bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md hover:border-teal-300 transition duration-300 group">
+                  <div class="flex items-center justify-between">
+                      <div>
+                          <h4 class="font-bold text-teal-900 text-lg group-hover:text-teal-700 transition">Hub Fazendo as Pazes</h4>
+                          <p class="text-sm text-gray-600 mt-1">Ferramentas estruturadas.</p>
+                      </div>
                   </div>
-                  <a href="https://nomedocurso.com.br" target="_blank" class="inline-block text-center bg-teal-100 text-teal-700 font-bold py-2 px-4 rounded hover:bg-teal-200 transition whitespace-nowrap">Conhecer Programa</a>
-              </div>
+              </a>
           </div>
       </div>
       
-      <!-- Botão de Voltar com Estilo Secundário -->
       <div class="mt-10">
         <a href="index.html" class="inline-block border-2 border-teal-700 text-teal-700 font-bold py-3 px-8 rounded-md hover:bg-teal-50 transition duration-300">
             Voltar à Página Inicial
@@ -86,7 +83,6 @@
   </main>
 
   <script>
-      // Função para ler parâmetros da URL
       function getQueryParam(param) {
           const urlParams = new URLSearchParams(window.location.search);
           return urlParams.get(param);
@@ -98,19 +94,14 @@
           const resourcesList = document.getElementById('resources-list');
 
           if (type === 'guia') {
-              // Cenário: Solicitou o Guia
               messageElement.innerHTML = 'A sua solicitação foi recebida com sucesso.<br><br><strong>Verifique seu e-mail (caixa de entrada ou spam) para acessar o material.</strong>';
-              // Mantém lista de recursos oculta
           } else {
-              // Cenário Padrão (Contato)
               messageElement.innerHTML = 'A sua mensagem foi enviada com sucesso.<br><br><strong>Entraremos em contato em breve.</strong>';
-              // Mostra lista de recursos
               resourcesList.classList.remove('hidden');
           }
-          
-          // Adiciona a classe para iniciar a animação se o script fade-in for usado
-          // document.querySelector('main').classList.add('visible');
       });
   </script>
 </body>
 </html>
+```
+```eof

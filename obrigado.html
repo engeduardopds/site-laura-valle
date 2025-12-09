@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obrigado! — Solicitação Recebida</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>body{font-family:'Inter',sans-serif}</style>
+  <title>Obrigado!</title>
+  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap)" rel="stylesheet">
+  <style>
+      body{font-family:'Inter',sans-serif}
+      .rotate-180 { transform: rotate(180deg); }
+  </style>
 </head>
 <body class="bg-teal-50 text-gray-700 min-h-screen flex items-center">
   <main class="container mx-auto px-6 py-20 text-center">
@@ -17,18 +20,69 @@
         <svg class="w-10 h-10 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
       </div>
       
-      <h1 class="text-3xl md:text-4xl font-bold text-teal-900">Tudo certo! 🎉</h1>
-      <p class="mt-4 text-lg text-gray-700">A sua solicitação foi recebida com sucesso.</p>
-      <p class="mt-2 text-gray-600">Se pediu o guia, verifique seu e-mail (caixa de entrada ou spam).<br>Se enviou uma mensagem, entrarei em contato em breve.</p>
+      <!-- Conteúdo Dinâmico -->
+      <h1 id="thank-you-title" class="text-3xl md:text-4xl font-bold text-teal-900">Tudo certo! 🎉</h1>
+      <p id="thank-you-message" class="mt-4 text-lg text-gray-700">A sua solicitação foi recebida com sucesso.</p>
+
+      <!-- Lista de Recursos (Oculta por padrão, mostrada apenas se NÃO for Guia) -->
+      <div id="resources-list" class="hidden mt-8 text-left border-t border-gray-200 pt-6">
+          <p class="text-center text-sm text-gray-500 mb-4">Enquanto aguarda, confira nossos materiais gratuitos:</p>
+          
+          <div class="space-y-4">
+              <!-- Item 1: Guia (Link direto para download ou âncora) -->
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-bold text-teal-900">Guia Gratuito de Regulação Emocional</h4>
+                  <p class="text-sm text-gray-600 mb-2">Baixe o material prático.</p>
+                  <a href="index.html#recursos" class="text-teal-700 font-bold hover:underline text-sm">Ir para Download</a>
+              </div>
+
+              <!-- Item 2: Aula Aberta -->
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-bold text-teal-900">Aula Aberta: Ansiedade</h4>
+                  <p class="text-sm text-gray-600 mb-2">Vídeo explicativo de 15 minutos.</p>
+                  <a href="#" class="text-teal-700 font-bold hover:underline text-sm">Assistir Agora</a>
+              </div>
+
+              <!-- Item 3: Hub -->
+              <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-bold text-teal-900">Hub Fazendo as Pazes</h4>
+                  <p class="text-sm text-gray-600 mb-2">Ferramentas estruturadas.</p>
+                  <a href="[https://nomedocurso.com.br](https://nomedocurso.com.br)" target="_blank" class="text-teal-700 font-bold hover:underline text-sm">Conhecer Programa</a>
+              </div>
+          </div>
+      </div>
       
       <div class="mt-8">
-        <a href="https://nomedocurso.com.br" target="_blank" rel="noopener" class="inline-block bg-teal-700 text-white font-bold py-3 px-6 rounded-md hover:bg-teal-800 transition">Conhecer o Hub Fazendo as Pazes</a>
-      </div>
-      <div class="mt-6">
-        <a href="index.html" class="text-teal-800 underline hover:text-teal-600 transition">Voltar à Página Inicial</a>
+        <a href="index.html" class="inline-block bg-teal-700 text-white font-bold py-3 px-6 rounded-md hover:bg-teal-800 transition">Voltar à Página Inicial</a>
       </div>
     </div>
   </main>
+
+  <script>
+      // Função para ler parâmetros da URL
+      function getQueryParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          const type = getQueryParam('type');
+          const titleElement = document.getElementById('thank-you-title');
+          const messageElement = document.getElementById('thank-you-message');
+          const resourcesList = document.getElementById('resources-list');
+
+          if (type === 'guia') {
+              // Cenário: Solicitou o Guia
+              messageElement.innerHTML = 'A sua solicitação foi recebida com sucesso.<br><strong>Verifique seu e-mail (caixa de entrada ou spam).</strong>';
+              // Mantém lista de recursos oculta
+          } else {
+              // Cenário Padrão (Contato)
+              messageElement.textContent = 'Entraremos em contato em breve.';
+              // Mostra lista de recursos
+              resourcesList.classList.remove('hidden');
+          }
+      });
+  </script>
 </body>
 </html>
 ```

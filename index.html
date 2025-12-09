@@ -57,59 +57,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
         .rotate-180 { transform: rotate(180deg); }
-
-        /* Animação de Brilho Sutil para o Menu Recursos */
         @keyframes subtle-glow {
             0%, 100% { text-shadow: 0 0 5px rgba(20, 184, 166, 0); color: #4b5563; }
             50% { text-shadow: 0 0 10px rgba(20, 184, 166, 0.4); color: #0f766e; }
         }
-        
-        /* Ajuste para alinhar o sublinhado */
-        .glow-container {
-            position: relative;
-            display: inline-flex;
-            align-items: baseline; 
-            gap: 4px; 
-            padding-bottom: 2px; 
-        }
-        
-        .glow-effect {
-            animation: subtle-glow 4s infinite ease-in-out;
-        }
-
-        .glow-container:hover {
-            animation: subtle-glow 1.5s infinite ease-in-out;
-        }
-        
-        /* Sublinhado manual */
-        .glow-container::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: 0; 
-            left: 0;
-            background-color: #14b8a6;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-        
-        .glow-container:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
+        .glow-container { position: relative; display: inline-flex; align-items: baseline; gap: 4px; padding-bottom: 2px; }
+        .glow-effect { animation: subtle-glow 4s infinite ease-in-out; }
+        .glow-container:hover { animation: subtle-glow 1.5s infinite ease-in-out; }
+        .glow-container::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: 0; left: 0; background-color: #14b8a6; transform: scaleX(0); transform-origin: bottom right; transition: transform 0.3s ease-out; }
+        .glow-container:hover::after { transform: scaleX(1); transform-origin: bottom left; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-700">
@@ -122,7 +81,6 @@
                 <a href="#sobre" class="text-gray-600 hover:text-teal-700 transition duration-300">Sobre Mim</a>
                 <a href="#publico" class="text-gray-600 hover:text-teal-700 transition duration-300">Como trabalho</a>
                 <a href="#formacao" class="text-gray-600 hover:text-teal-700 transition duration-300">Formação</a>
-                <!-- Link com Efeito Glow Ajustado -->
                 <a href="#recursos" class="text-gray-600 font-medium transition duration-300 glow-container glow-effect">
                     Recursos <span class="text-xs self-center">✨</span>
                 </a>
@@ -133,7 +91,6 @@
             </button>
         </nav>
         
-        <!-- Menu Mobile (Modificado para Sobreposição) -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 px-6 pb-6 pt-2 z-40">
             <a href="#sobre" class="block py-3 text-gray-600 hover:text-teal-700 border-b border-gray-50">Sobre Mim</a>
             <a href="#publico" class="block py-3 text-gray-600 hover:text-teal-700 border-b border-gray-50">Como trabalho</a>
@@ -149,16 +106,13 @@
         <section id="hero" class="py-20 md:py-32 bg-teal-50">
             <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="flex flex-col items-center md:order-last"> 
-                    <!-- Imagem correta 'Laura.png' -->
                     <img src="Laura.png" alt="Foto de Laura do Valle" class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-lg object-cover" onerror="this.onerror=null;this.src='https://placehold.co/320x320/a0d2db/374151?text=Laura';">
                     <h2 class="text-3xl font-bold text-teal-900 mt-6">Laura do Valle</h2>
                     <p class="text-lg text-teal-800">Psicóloga | Mestre em Psicologia</p>
                     <div class="mt-6 flex justify-center space-x-6">
-                        <!-- Instagram -->
                         <a href="https://www.instagram.com/alauradovalle/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-700 transition duration-300">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802.46 1.15-.808.347.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802.46 1.15-.808.347.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
                         </a>
-                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/laura-do-valle-4104781b7/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-700 transition duration-300">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
@@ -286,7 +240,6 @@
                                         <span class="text-teal-500 mr-2">📄</span>
                                         <a href="#" class="text-gray-700 hover:text-teal-700 transition"><strong>3 erros comuns ao lidar com ansiedade</strong> (Vídeo/Artigo)</a>
                                     </li>
-                                    <!-- Adicione mais itens aqui futuramente -->
                                 </ul>
                             </div>
                         </div>
@@ -381,7 +334,7 @@
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Contato</h2>
                 </div>
 
-                <!-- Informações de Contato -->
+                <!-- Informações de Contato (Atualizado) -->
                 <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-center">
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="font-bold text-lg text-teal-800 mb-2">Endereço</h3>
@@ -398,10 +351,12 @@
                                 <span>laurapordany@gmail.com</span>
                             </a>
 
-                            <!-- Instagram -->
+                            <!-- Instagram (Corrigido para ficar alinhado) -->
                             <a href="https://www.instagram.com/alauradovalle/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 text-gray-600 hover:text-teal-700 transition">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802.46 1.15-.808.347.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802.46 1.15-.808.347.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895-.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
+                                <span>@alauradovalle</span>
                             </a>
+
                             <!-- LinkedIn -->
                             <a href="https://www.linkedin.com/in/laura-do-valle-4104781b7/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 text-gray-600 hover:text-teal-700 transition">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -411,10 +366,11 @@
                     </div>
                 </div>
 
+                <!-- FORMULÁRIO DE CONTATO NETLIFY -->
                 <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-                    <!-- FORMULÁRIO DE CONTATO NETLIFY -->
                     <form name="contato" method="POST" action="/obrigado.html" data-netlify="true">
                         <input type="hidden" name="form-name" value="contato" />
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
@@ -460,7 +416,6 @@
     </footer>
 
     <script>
-        // ... (Scripts de menu mobile e scroll anteriores mantidos) ...
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if(mobileMenuButton && mobileMenu){
@@ -486,7 +441,6 @@
         }, appearOptions);
         faders.forEach(fader => { appearOnScroll.observe(fader); });
 
-        // --- Lógica do Acordeão ---
         function toggleAccordion(id) {
             const content = document.getElementById(id);
             const btn = content.previousElementSibling;
@@ -495,7 +449,6 @@
             icon.classList.toggle('rotate-180');
         }
 
-        // --- Lógica do SELETOR DE KIT (COM PERFIL REFINADO) ---
         const resourcesDB = {
             'sono': { title: 'Checklist de Higiene do Sono', link: '#' },
             'emocoes': { title: 'Rastreador de Humor (Mood Tracker)', link: '#' },
@@ -577,8 +530,9 @@
             document.querySelectorAll('#kit-selector input').forEach(cb => cb.checked = false);
         }
 
-        // --- Automação de Envio (Mantida) ---
+        // IMPORTANTE: Certifique-se que este é o URL correto do seu script
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxepVef6qIWph2I274-ZyYkMRNQtEpGQj7cXu31by6rTm8188pX3sXyYT_4c0Fv8_vn/exec";
+
         const form = document.getElementById('lead-form');
         const statusMsg = document.getElementById('lead-status');
         const btnLead = document.getElementById('submit-btn');
@@ -586,21 +540,31 @@
         if(form){
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                
                 btnLead.disabled = true;
                 btnLead.textContent = "Enviando...";
                 statusMsg.textContent = "";
                 statusMsg.className = "text-sm text-center font-semibold mt-2 text-gray-600";
+
                 const nome = document.getElementById('nome').value;
                 const email = document.getElementById('email').value;
-                const payload = { nome: nome, email: email, origem: "site_accordion" };
+
+                const payload = { 
+                    nome: nome, 
+                    email: email, 
+                    origem: "site_accordion" 
+                };
+
                 try {
                     await fetch(WEB_APP_URL, { 
                         method: "POST", mode: "no-cors", 
                         headers: { "Content-Type": "text/plain" },
                         body: JSON.stringify(payload) 
                     });
+
                     console.log("Envio concluído.");
-                    window.location.href = "obrigado.html";
+                    window.location.href = "obrigado.html?type=guia";
+
                 } catch (err) {
                     console.error("Erro no fetch:", err);
                     statusMsg.textContent = "Erro de conexão. Tente novamente.";

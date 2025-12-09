@@ -27,6 +27,7 @@
             background-color: #ccfbf1; 
             border-color: #14b8a6; 
             color: #0f766e; 
+            font-weight: 700;
         }
     </style>
 </head>
@@ -45,14 +46,14 @@
     </header>
 
     <main class="flex-grow container mx-auto px-6 py-12 fade-in">
-        <div class="max-w-3xl mx-auto">
+        <div class="max-w-4xl mx-auto"> <!-- Aumentei a largura máxima para acomodar melhor a grade -->
             <div class="text-center mb-10">
                 <h1 class="text-3xl md:text-4xl font-bold text-teal-900 mb-4">Solicitação de Agendamento</h1>
                 <p class="text-lg text-gray-600">Preencha seus dados e marque <strong>todos os horários</strong> em que você tem disponibilidade. Entrarei em contato assim que houver uma vaga compatível.</p>
             </div>
 
             <!-- FORMULÁRIO DE AGENDAMENTO -->
-            <form id="waitlist-form" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <form id="waitlist-form" class="bg-white p-6 md:p-10 rounded-xl shadow-lg border border-gray-200">
                 <!-- Dados Pessoais -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
@@ -64,50 +65,98 @@
                         <input type="email" id="wl-email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500 transition">
                     </div>
                 </div>
-                <div class="mb-6">
+                <div class="mb-8">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Telefone / WhatsApp</label>
                     <input type="tel" id="wl-telefone" required placeholder="(XX) 9XXXX-XXXX" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500 transition">
                 </div>
 
                 <!-- Grade de Disponibilidade -->
                 <div class="mb-8">
-                    <label class="block text-sm font-medium text-gray-700 mb-3">Marque sua disponibilidade:</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-center">
+                    <label class="block text-lg font-bold text-gray-800 mb-4 text-center">Marque sua disponibilidade:</label>
+                    
+                    <!-- Grid Responsivo para os Dias -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                        
                         <!-- Segunda -->
                         <div class="space-y-2">
-                            <h4 class="font-bold text-teal-800 text-sm">Segunda</h4>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Segunda Manhã"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Manhã</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Segunda Tarde"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Tarde</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Segunda Noite"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Noite</div></label>
+                            <h4 class="font-bold text-teal-800 text-sm text-center border-b pb-1 border-gray-100">Segunda</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 10h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">10h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 11h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">11h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 12h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">12h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 13h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">13h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 14h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">14h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 15h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">15h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 16h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">16h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 17h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">17h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Seg 18h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">18h</div></label>
+                            </div>
                         </div>
+
                         <!-- Terça -->
                         <div class="space-y-2">
-                            <h4 class="font-bold text-teal-800 text-sm">Terça</h4>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Terça Manhã"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Manhã</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Terça Tarde"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Tarde</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Terça Noite"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Noite</div></label>
+                            <h4 class="font-bold text-teal-800 text-sm text-center border-b pb-1 border-gray-100">Terça</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 10h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">10h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 11h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">11h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 12h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">12h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 13h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">13h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 14h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">14h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 15h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">15h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 16h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">16h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 17h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">17h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Ter 18h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">18h</div></label>
+                            </div>
                         </div>
+
                         <!-- Quarta -->
                         <div class="space-y-2">
-                            <h4 class="font-bold text-teal-800 text-sm">Quarta</h4>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quarta Manhã"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Manhã</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quarta Tarde"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Tarde</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quarta Noite"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Noite</div></label>
+                            <h4 class="font-bold text-teal-800 text-sm text-center border-b pb-1 border-gray-100">Quarta</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 10h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">10h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 11h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">11h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 12h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">12h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 13h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">13h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 14h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">14h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 15h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">15h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 16h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">16h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 17h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">17h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qua 18h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">18h</div></label>
+                            </div>
                         </div>
+
                         <!-- Quinta -->
                         <div class="space-y-2">
-                            <h4 class="font-bold text-teal-800 text-sm">Quinta</h4>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quinta Manhã"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Manhã</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quinta Tarde"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Tarde</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quinta Noite"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Noite</div></label>
+                            <h4 class="font-bold text-teal-800 text-sm text-center border-b pb-1 border-gray-100">Quinta</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 10h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">10h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 11h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">11h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 12h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">12h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 13h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">13h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 14h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">14h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 15h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">15h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 16h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">16h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 17h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">17h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Qui 18h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">18h</div></label>
+                            </div>
                         </div>
+
                         <!-- Sexta -->
                         <div class="space-y-2">
-                            <h4 class="font-bold text-teal-800 text-sm">Sexta</h4>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sexta Manhã"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Manhã</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sexta Tarde"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Tarde</div></label>
-                            <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sexta Noite"><div class="border rounded p-2 text-xs hover:bg-gray-50 transition">Noite</div></label>
+                            <h4 class="font-bold text-teal-800 text-sm text-center border-b pb-1 border-gray-100">Sexta</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 10h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">10h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 11h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">11h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 12h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">12h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 13h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">13h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 14h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">14h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 15h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">15h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 16h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">16h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 17h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">17h</div></label>
+                                <label class="cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sex 18h"><div class="border rounded p-1 text-center text-xs hover:bg-gray-50 transition">18h</div></label>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 

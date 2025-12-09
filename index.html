@@ -43,7 +43,6 @@
     </script>
 
     <!-- Google Analytics 4 (GA4) -->
-    <!-- IMPORTANTE: Substitua G-XXXXXXXXXX pelo seu ID real do GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -52,7 +51,6 @@
       gtag('config', 'G-XXXXXXXXXX');
     </script>
 
-    <!-- Correção: Links limpos para carregar o CSS corretamente -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,11 +69,13 @@
         }
         .rotate-180 { transform: rotate(180deg); }
 
+        /* Animação de Brilho Sutil para o Menu Recursos */
         @keyframes subtle-glow {
             0%, 100% { text-shadow: 0 0 5px rgba(20, 184, 166, 0); color: #4b5563; }
             50% { text-shadow: 0 0 10px rgba(20, 184, 166, 0.4); color: #0f766e; }
         }
         
+        /* Ajuste para alinhar o sublinhado */
         .glow-container {
             position: relative;
             display: inline-flex;
@@ -92,6 +92,7 @@
             animation: subtle-glow 1.5s infinite ease-in-out;
         }
         
+        /* Sublinhado manual */
         .glow-container::after {
             content: '';
             position: absolute;
@@ -109,13 +110,6 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-
-        /* Estilo para Checkboxes da Agenda */
-        .agenda-checkbox:checked + div {
-            background-color: #ccfbf1; /* teal-100 */
-            border-color: #14b8a6; /* teal-500 */
-            color: #0f766e; /* teal-800 */
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-700">
@@ -128,22 +122,24 @@
                 <a href="#sobre" class="text-gray-600 hover:text-teal-700 transition duration-300">Sobre Mim</a>
                 <a href="#publico" class="text-gray-600 hover:text-teal-700 transition duration-300">Como trabalho</a>
                 <a href="#formacao" class="text-gray-600 hover:text-teal-700 transition duration-300">Formação</a>
+                <!-- Link com Efeito Glow Ajustado -->
                 <a href="#recursos" class="text-gray-600 font-medium transition duration-300 glow-container glow-effect">
                     Recursos <span class="text-xs self-center">✨</span>
                 </a>
-                <a href="#agendar" class="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-800 transition text-sm font-bold">Agendar</a>
+                <a href="agendar.html" class="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-800 transition text-sm font-bold">Agendar</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
         
+        <!-- Menu Mobile (Modificado para Sobreposição) -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 px-6 pb-6 pt-2 z-40">
             <a href="#sobre" class="block py-3 text-gray-600 hover:text-teal-700 border-b border-gray-50">Sobre Mim</a>
             <a href="#publico" class="block py-3 text-gray-600 hover:text-teal-700 border-b border-gray-50">Como trabalho</a>
             <a href="#formacao" class="block py-3 text-gray-600 hover:text-teal-700 border-b border-gray-50">Formação</a>
             <a href="#recursos" class="block py-3 text-teal-700 font-bold glow-effect border-b border-gray-50">Recursos ✨</a>
-            <a href="#agendar" class="block py-3 text-teal-800 font-bold bg-teal-50 mt-2 rounded pl-2">Agendar Consulta</a>
+            <a href="agendar.html" class="block py-3 text-teal-800 font-bold bg-teal-50 mt-2 rounded pl-2">Agendar Consulta</a>
         </div>
     </header>
 
@@ -153,13 +149,16 @@
         <section id="hero" class="py-20 md:py-32 bg-teal-50">
             <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="flex flex-col items-center md:order-last"> 
+                    <!-- Imagem correta 'Laura.png' -->
                     <img src="Laura.png" alt="Foto de Laura do Valle" class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-lg object-cover" onerror="this.onerror=null;this.src='https://placehold.co/320x320/a0d2db/374151?text=Laura';">
                     <h2 class="text-3xl font-bold text-teal-900 mt-6">Laura do Valle</h2>
                     <p class="text-lg text-teal-800">Psicóloga | Mestre em Psicologia</p>
                     <div class="mt-6 flex justify-center space-x-6">
+                        <!-- Instagram -->
                         <a href="https://www.instagram.com/alauradovalle/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-700 transition duration-300">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802.46 1.15-.808.347.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm0 1.624c-2.373 0-2.686.01-3.633.053-1.002.045-1.505.2-1.897.37-.477.208-.802.46-1.15.808-.347.348-.6.673-.808 1.15-.17.392-.325.895-.37 1.897-.043.947-.053 1.26-.053 3.633s.01 2.686.053 3.633c.045 1.002.2 1.505.37 1.897.208.477.46.802.808 1.15.348.347.673.6 1.15.808.392.17.895.325 1.897.37.947.043 1.26.053 3.633.053s2.686-.01 3.633-.053c1.002-.045 1.505-.2 1.897-.37.477-.208.802.46 1.15-.808.347.348.6-.673.808-1.15.17-.392.325-.895.37-1.897.043-.947.053-1.26.053-3.633s-.01-2.686-.053-3.633c-.045-1.002-.2-1.505-.37-1.897-.208-.477-.46-.802-.808-1.15-.348-.347-.673-.6-1.15-.808-.392-.17-.895.325-1.897-.37C15.001 3.634 14.688 3.624 12.315 3.624zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.143a2.261 2.261 0 110-4.522 2.261 2.261 0 010 4.522zm4.558-5.712a.927.927 0 100 1.854.927.927 0 000-1.854z" clip-rule="evenodd" /></svg>
                         </a>
+                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/laura-do-valle-4104781b7/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-teal-700 transition duration-300">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
@@ -168,7 +167,7 @@
                 <div class="text-center md:text-left"> 
                     <h1 class="text-4xl md:text-5xl font-bold text-teal-900 leading-tight">Psicoterapia com base em ciência e acolhimento.</h1>
                     <p class="text-lg md:text-xl mt-6 text-teal-800">Atendimento online e presencial em Porto Alegre, focado em ansiedade e transições de carreira.</p>
-                    <a href="#agendar" class="inline-block bg-teal-700 text-white font-bold py-3 px-8 rounded-md hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-300 mt-10 text-lg">
+                    <a href="agendar.html" class="inline-block bg-teal-700 text-white font-bold py-3 px-8 rounded-md hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-300 mt-10 text-lg">
                         Agende sua consulta
                     </a>
                 </div>
@@ -208,7 +207,6 @@
                 <h2 class="text-3xl font-bold text-gray-800 mb-12">Formação</h2>
                 <div class="max-w-3xl mx-auto text-left space-y-8">
                     <p class="text-center text-lg mb-10 text-justify">Atuo como psicóloga clínica com enfoque em quadros de ansiedade, TDAH, déficits de organização/planejamento, carreira e relacionamentos. Sou professora em instituições de pós-graduação e supervisora clínica.</p>
-                    <!-- Lista de Formação -->
                     <div class="flex items-center bg-gray-100 p-4 rounded-lg">
                         <div class="flex-shrink-0 bg-teal-700 text-white rounded-full h-10 w-10 flex items-center justify-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                         <div class="ml-4"><h3 class="text-lg font-semibold text-gray-800">Psicóloga com 12 anos de formação - CRP 07/21885</h3></div>
@@ -288,6 +286,7 @@
                                         <span class="text-teal-500 mr-2">📄</span>
                                         <a href="#" class="text-gray-700 hover:text-teal-700 transition"><strong>3 erros comuns ao lidar com ansiedade</strong> (Vídeo/Artigo)</a>
                                     </li>
+                                    <!-- Adicione mais itens aqui futuramente -->
                                 </ul>
                             </div>
                         </div>
@@ -375,99 +374,6 @@
             </div>
         </section>
 
-        <!-- ============================================= -->
-        <!-- NOVA SEÇÃO: AGENDAR CONSULTA (Fila de Espera) -->
-        <!-- ============================================= -->
-        <section id="agendar" class="py-20 md:py-28 bg-white border-t border-gray-100">
-            <div class="container mx-auto px-6 fade-in">
-                <div class="max-w-3xl mx-auto">
-                    <div class="text-center mb-10">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Solicitação de Agendamento</h2>
-                        <p class="text-lg text-gray-600">Preencha seus dados e marque <strong>todos os horários</strong> em que você tem disponibilidade. Entrarei em contato assim que houver uma vaga compatível.</p>
-                    </div>
-
-                    <form id="waitlist-form" class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-200">
-                        <!-- Dados Pessoais -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
-                                <input type="text" id="wl-nome" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                                <input type="email" id="wl-email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500">
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Telefone / WhatsApp</label>
-                            <input type="tel" id="wl-telefone" required placeholder="(XX) 9XXXX-XXXX" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500">
-                        </div>
-
-                        <!-- Grade de Disponibilidade -->
-                        <div class="mb-8">
-                            <label class="block text-sm font-medium text-gray-700 mb-3">Marque sua disponibilidade:</label>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center">
-                                <!-- Dias da Semana -->
-                                <div>
-                                    <h4 class="font-bold text-teal-800 mb-2">Segunda</h4>
-                                    <div class="space-y-2">
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Segunda Manhã"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Manhã</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Segunda Tarde"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Tarde</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Segunda Noite"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Noite</div></label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-teal-800 mb-2">Terça</h4>
-                                    <div class="space-y-2">
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Terça Manhã"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Manhã</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Terça Tarde"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Tarde</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Terça Noite"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Noite</div></label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-teal-800 mb-2">Quarta</h4>
-                                    <div class="space-y-2">
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quarta Manhã"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Manhã</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quarta Tarde"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Tarde</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quarta Noite"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Noite</div></label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-teal-800 mb-2">Quinta</h4>
-                                    <div class="space-y-2">
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quinta Manhã"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Manhã</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quinta Tarde"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Tarde</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Quinta Noite"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Noite</div></label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-teal-800 mb-2">Sexta</h4>
-                                    <div class="space-y-2">
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sexta Manhã"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Manhã</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sexta Tarde"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Tarde</div></label>
-                                        <label class="block cursor-pointer"><input type="checkbox" class="hidden agenda-checkbox" value="Sexta Noite"><div class="border rounded p-2 text-sm hover:bg-gray-100 transition">Noite</div></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Motivo -->
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Qual o motivo da busca por atendimento?</label>
-                            <textarea id="wl-motivo" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500" placeholder="Descreva brevemente o que você está sentindo ou buscando..."></textarea>
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" id="wl-submit" class="bg-teal-700 text-white font-bold py-3 px-10 rounded-md hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-300 text-lg w-full md:w-auto">
-                                Enviar para Lista de Espera
-                            </button>
-                            <p id="wl-status" class="text-sm font-semibold mt-4"></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
         <!-- Seção Contato -->
         <section id="contato" class="py-20 md:py-28 bg-teal-50">
             <div class="container mx-auto px-6 fade-in">
@@ -475,7 +381,7 @@
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Contato</h2>
                 </div>
 
-                <!-- Informações de Contato (Atualizado) -->
+                <!-- Informações de Contato -->
                 <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-center">
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="font-bold text-lg text-teal-800 mb-2">Endereço</h3>
@@ -505,8 +411,8 @@
                     </div>
                 </div>
 
-                <!-- Formulário de contato com 'action' para redirecionamento correto -->
                 <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                    <!-- FORMULÁRIO DE CONTATO NETLIFY -->
                     <form name="contato" method="POST" action="/obrigado.html" data-netlify="true">
                         <input type="hidden" name="form-name" value="contato" />
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -597,7 +503,6 @@
             'ansiedade': { title: 'Cartão de Enfrentamento para Crises', link: '#' }
         };
 
-        // Textos Refinados para cada Perfil
         const perfilTexts = {
             'ansioso': `Selecionámos estes materiais para te oferecer acolhimento. Sabemos que muitas vezes o desconforto vem da sensação de perder o controle ou de não saber o que fazer.<br><br>Estas ferramentas são seguras e baseadas em evidências. Elas funcionam como um apoio inicial para a tua mente.<br><br>Se sentires que precisas de um método passo a passo, validado, para não teres de enfrentar isto sozinho(a), o <strong>Hub Fazendo as Pazes</strong> oferece essa estrutura segura.<br><br>Esperamos que você fique bem, se precisar, estamos disponíveis no Hub Fazendo as Pazes.`,
             'curioso': `Descobrimos que estes são os materiais perfeitos para o teu momento. Te entendemos, você só precisa dos estímulos certos.<br><br>Estas ferramentas podem ajudar o teu foco e emoções. Temos o conteúdo que você precisa.<br><br>No <strong>Hub Fazendo as Pazes</strong>, temos diversos recursos para descobrir mais sobre ti mesmo(a) e transformar essa energia em potencial.`,
@@ -615,7 +520,6 @@
                 return;
             }
 
-            // Lógica de Perfil REFINADA
             let ansiedadeScore = 0;
             let curiosidadeScore = 0;
 
@@ -624,21 +528,18 @@
                 if (cb.dataset.category === 'curiosidade') curiosidadeScore++;
             });
 
-            // Aplicação da lógica "Exclusão vs Mistura"
             let perfil = 'hibrido'; 
 
             if (curiosidadeScore > 0 && ansiedadeScore === 0) {
-                perfil = 'curioso'; // Apenas curiosidade marcada
+                perfil = 'curioso'; 
             } else if (ansiedadeScore > 0 && curiosidadeScore === 0) {
-                perfil = 'ansioso'; // Apenas ansiedade marcada
+                perfil = 'ansioso'; 
             } else {
-                perfil = 'hibrido'; // Mistura de ambos ou empate (padrão)
+                perfil = 'hibrido'; 
             }
             
-            // Define o Texto Baseado no Perfil
             messageContainer.innerHTML = perfilTexts[perfil];
 
-            // Gera a Lista
             listContainer.innerHTML = ''; 
             listContainer.innerHTML += `
                 <div class="flex items-center justify-between p-3 bg-white rounded border border-gray-200">
@@ -699,8 +600,7 @@
                         body: JSON.stringify(payload) 
                     });
                     console.log("Envio concluído.");
-                    // Redireciona para obrigado (guia)
-                    window.location.href = "obrigado.html?type=guia";
+                    window.location.href = "obrigado.html";
                 } catch (err) {
                     console.error("Erro no fetch:", err);
                     statusMsg.textContent = "Erro de conexão. Tente novamente.";
@@ -710,62 +610,8 @@
                 }
             });
         }
-
-        // ======================================================
-        // SCRIPT PARA A FILA DE ESPERA (AGENDAMENTO) - NOVO
-        // ======================================================
-        // Este script envia os dados do formulário de agendamento para o Apps Script
-        const formWaitlist = document.getElementById('waitlist-form');
-        const statusWL = document.getElementById('wl-status');
-        const btnWL = document.getElementById('wl-submit');
-
-        if(formWaitlist){
-            formWaitlist.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                btnWL.disabled = true; 
-                btnWL.textContent = "Enviando...";
-                statusWL.textContent = "";
-                
-                // Coletar Checkboxes Marcados
-                const checkedBoxes = document.querySelectorAll('.agenda-checkbox:checked');
-                const disponibilidade = Array.from(checkedBoxes).map(cb => cb.value).join(', ');
-                
-                if(!disponibilidade) {
-                    alert("Por favor, selecione pelo menos um horário de disponibilidade.");
-                    btnWL.disabled = false; 
-                    btnWL.textContent = "Enviar para Lista de Espera";
-                    return;
-                }
-
-                const payload = { 
-                    nome: document.getElementById('wl-nome').value, 
-                    email: document.getElementById('wl-email').value,
-                    telefone: document.getElementById('wl-telefone').value,
-                    motivo: document.getElementById('wl-motivo').value,
-                    disponibilidade: disponibilidade,
-                    origem: "agendamento_site" 
-                };
-                
-                try {
-                    await fetch(WEB_APP_URL, { 
-                        method: "POST", mode: "no-cors", 
-                        headers: { "Content-Type": "text/plain" },
-                        body: JSON.stringify(payload) 
-                    });
-                    console.log("Envio concluído (agendamento).");
-                    // Redireciona para obrigado (agendamento)
-                    window.location.href = "obrigado.html?type=agendamento";
-                } catch (err) {
-                    console.error(err);
-                    statusWL.textContent = "Erro de conexão. Tente novamente.";
-                    statusWL.className = "text-sm font-bold text-red-600 mt-2";
-                    btnWL.disabled = false;
-                    btnWL.textContent = "Enviar para Lista de Espera";
-                }
-            });
-        }
     </script>
 </body>
 </html>
-
-
+```
+```eof
